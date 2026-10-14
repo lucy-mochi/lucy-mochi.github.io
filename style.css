@@ -2,18 +2,18 @@
 @font-face { font-family: "Carlito"; font-style: italic; font-weight: 400; font-display: swap; src: url("assets/fonts/carlito-400-italic.woff2") format("woff2"); }
 
 :root {
-  --ink: #1f1b27;
-  --dim: #6c6777;
-  --faint: #9a95a5;
-  --rule: rgba(31, 27, 39, 0.2);
-  --bg1: #dff2f6;
-  --bg2: #ebe9ef;
-  --bg3: #e8dde1;
-  --accent: #75657f;
-  --c1: #bbe5ed;
-  --c2: #bfbccb;
-  --c3: #b399a2;
-  --sheet: #fcfcfd;
+  --ink: #0a0908;
+  --dim: #55626a;
+  --faint: #8999a2;
+  --rule: rgba(10, 9, 8, 0.18);
+  --accent: #527b8e;
+  --c1: #e8f7ee;
+  --c2: #527b8e;
+  --c3: #0a0908;
+  --bg1: #e8f7ee;
+  --bg2: #dbeaee;
+  --bg3: #c6d9e1;
+  --sheet: #fcfdfc;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -44,11 +44,11 @@ body {
   max-width: 1080px; margin: 0 auto; min-height: calc(100vh - 70px);
   padding: 26px clamp(20px, 4vw, 48px) 56px;
   background:
-    linear-gradient(180deg, rgba(187, 229, 237, 0.26) 0%, rgba(191, 188, 203, 0.08) 220px, rgba(255, 255, 255, 0) 360px),
+    linear-gradient(180deg, rgba(232, 247, 238, 0.26) 0%, rgba(82, 123, 142, 0.08) 220px, rgba(255, 255, 255, 0) 360px),
     var(--sheet);
   border: 1px solid rgba(255, 255, 255, 0.95);
   border-radius: 16px;
-  box-shadow: 0 8px 36px rgba(70, 55, 95, 0.1);
+  box-shadow: 0 8px 36px rgba(10, 40, 55, 0.1);
 }
 
 /* ---------- top bar ---------- */
@@ -79,13 +79,13 @@ body {
 .hero-side span { color: var(--accent); }
 
 .home-grid { display: grid; grid-template-columns: minmax(200px, 300px) 1fr; gap: clamp(28px, 5vw, 64px); margin-top: 38px; align-items: start; }
-.portrait { width: 100%; aspect-ratio: 573 / 802; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 22px rgba(70, 55, 95, 0.12); }
+.portrait { width: 100%; aspect-ratio: 573 / 802; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 22px rgba(10, 40, 55, 0.12); }
 .portrait img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
 /* ---------- rows (home index, project lists) ---------- */
 .index, .rows { border-bottom: 1px solid var(--rule); }
 .row { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr) auto; gap: 24px; align-items: center; padding: 26px 0; border-top: 1px solid var(--rule); transition: background .25s, padding .25s; }
-.row:hover { background: linear-gradient(90deg, rgba(187, 229, 237, 0.28), rgba(255, 255, 255, 0)); padding-left: 10px; }
+.row:hover { background: linear-gradient(90deg, rgba(232, 247, 238, 0.28), rgba(255, 255, 255, 0)); padding-left: 10px; }
 .row-title { font-size: clamp(24px, 3vw, 32px); line-height: 1.15; }
 .row-meta { font-size: 15px; color: var(--faint); line-height: 1.4; }
 .row-meta em { font-style: italic; }
@@ -95,7 +95,7 @@ body {
   background: #fff; border: 1px solid var(--rule); color: var(--ink); transition: background .2s, border-color .2s;
 }
 .pill span { color: var(--accent); }
-.pill:hover, .row:hover .pill { background: #e9f6f9; border-color: var(--accent); }
+.pill:hover, .row:hover .pill { background: #e8f7ee; border-color: var(--accent); }
 
 /* ---------- projects ---------- */
 .block { margin-top: 48px; }
@@ -130,7 +130,7 @@ body {
 .masonry .frame img { width: 100%; height: auto; display: block; cursor: zoom-in; transition: transform .6s; }
 .masonry .frame:hover img { transform: scale(1.02); }
 
-.lightbox { position: fixed; inset: 0; z-index: 50; display: flex; align-items: center; justify-content: center; padding: 4vmin; background: rgba(31, 27, 39, 0.6); backdrop-filter: blur(14px); cursor: zoom-out; }
+.lightbox { position: fixed; inset: 0; z-index: 50; display: flex; align-items: center; justify-content: center; padding: 4vmin; background: rgba(10, 9, 8, 0.6); backdrop-filter: blur(14px); cursor: zoom-out; }
 .lightbox[hidden] { display: none; }
 .lightbox img { max-width: 100%; max-height: 100%; border-radius: 12px; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4); }
 
