@@ -265,3 +265,12 @@ body.is-home .index .row { border-top: 0; }
   color: #527b8e; /* underline colour on hover; letters take the gradient */
 }
 .pill span, .pill.primary span { color: inherit; -webkit-text-fill-color: transparent; }
+
+/* button text gradient: black to the light highlight blue */
+.pill, .pill.primary, .bar .mail, .links .pill,
+.pill:hover, .pill.primary:hover, .row:hover .pill {
+  background: linear-gradient(90deg, #000000 0%, #b3d7ff 100%);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-decoration-color: #000000;
+}
