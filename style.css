@@ -365,3 +365,36 @@ body.is-home .index .row { border-top: 0; }
 .mail-note { font-size: 8.25px; }
 
 .mail-note { font-size: 6px; }
+
+/* ---------- calendar ---------- */
+.cal-month { margin-top: 36px; }
+.cal-month:first-child { margin-top: 12px; }
+.cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; max-width: 980px; }
+.cal-dow { font-size: 12px; letter-spacing: 0.06em; color: #000; padding: 0 0 2px 2px; }
+.cal-day { position: relative; aspect-ratio: 1; padding: 0; margin: 0; border: 0; background: none; border-radius: 10px; overflow: hidden; font: inherit; color: #000; text-align: left; }
+.cal-day .cal-num { position: absolute; top: 6px; left: 8px; font-size: 13px; line-height: 1; }
+.cal-day.has { cursor: pointer; }
+.cal-day.has img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s; }
+.cal-day.has:hover img, .cal-day.has:focus-visible img { transform: scale(1.05); }
+.cal-day.has .cal-num { background: rgba(255, 255, 255, 0.9); padding: 3px 6px; border-radius: 6px; top: 6px; left: 6px; }
+.cal-day.has:focus-visible { outline: 3px solid #000; outline-offset: 2px; }
+
+.cal-tip { position: fixed; z-index: 60; max-width: 260px; background: #fff; color: #000; border: 1px solid #000; border-radius: 8px; padding: 10px 12px; font-size: 14px; line-height: 1.4; pointer-events: none; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12); }
+.cal-tip[hidden] { display: none; }
+
+.entry-overlay { position: fixed; inset: 0; z-index: 40; display: flex; align-items: center; justify-content: center; padding: 4vmin; background: rgba(0, 0, 0, 0.45); }
+.entry-overlay[hidden] { display: none; }
+.entry-card { position: relative; background: #fff; border: 3px solid #000; border-radius: 16px; padding: 28px 30px 30px; max-width: min(1200px, 100%); max-height: 100%; overflow: auto; }
+.entry-card .block-title { margin: 0 44px 10px 0; }
+.entry-card .group-note { margin-bottom: 18px; }
+.entry-close { position: absolute; top: 14px; right: 18px; border: 0; background: none; font: inherit; font-size: 34px; line-height: 1; color: #000; cursor: pointer; padding: 0; }
+.entry-photos { display: flex; flex-wrap: wrap; gap: 14px; align-items: flex-start; }
+.entry-photos img { max-height: 62vh; max-width: 100%; width: auto; height: auto; border-radius: 10px; display: block; cursor: zoom-in; }
+@media (max-width: 760px) { .cal-grid { gap: 4px; } .cal-day .cal-num { font-size: 11px; } .entry-card { padding: 20px; } }
+
+.cal-grid { max-width: 1180px; }
+
+/* open entry: photos share one row at equal height */
+.entry-card { width: min(1200px, 100%); }
+.entry-photos { flex-wrap: nowrap; }
+.entry-photos img { flex: 1 1 0; min-width: 0; width: 0; max-height: none; height: auto; }

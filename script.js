@@ -108,6 +108,147 @@
     }, 0);
   }
 
+  // ---------- calendar view (used when every group in a tab is a date, like the steaks) ----------
+  var MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  function parseDate(label) {
+    var m = /^\s*([A-Za-z]+)\s+(\d{1,2}),\s*(\d{4})\s*$/.exec(label);
+    if (!m) return null;
+    var mi = MONTHS.indexOf(m[1].charAt(0).toUpperCase() + m[1].slice(1).toLowerCase());
+    return mi < 0 ? null : { y: +m[3], m: mi, d: +m[2] };
+  }
+
+  var tip = null, overlay = null;
+  function ensurePopups() {
+    if (tip) return;
+    tip = document.createElement("div");
+    tip.className = "cal-tip";
+    tip.hidden = true;
+    document.body.appendChild(tip);
+    overlay = document.createElement("div");
+    overlay.className = "entry-overlay";
+    overlay.hidden = true;
+    overlay.addEventListener("click", function (e) { if (e.target === overlay) overlay.hidden = true; });
+    document.body.appendChild(overlay);
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") overlay.hidden = true; });
+  }
+  function showTip(cell, text) {
+    if (!text) return;
+    tip.textContent = text;
+    tip.hidden = false;
+    var r = cell.getBoundingClientRect();
+    var left = Math.min(r.left, window.innerWidth - tip.offsetWidth - 12);
+    var top = r.bottom + 8;
+    if (top + tip.offsetHeight > window.innerHeight - 8) top = Math.max(8, r.top - tip.offsetHeight - 8);
+    tip.style.left = Math.max(8, left) + "px";
+    tip.style.top = top + "px";
+  }
+  function openEntry(label, entry) {
+    var images = Array.isArray(entry) ? entry : entry.images;
+    var note = Array.isArray(entry) ? "" : (entry.note || "");
+    overlay.innerHTML = "";
+    var card = document.createElement("div");
+    card.className = "entry-card";
+    var close = document.createElement("button");
+    close.className = "entry-close";
+    close.setAttribute("aria-label", "Close");
+    close.innerHTML = "&times;";
+    close.onclick = function () { overlay.hidden = true; };
+    var h = document.createElement("h2");
+    h.className = "block-title";
+    h.textContent = label;
+    card.appendChild(close);
+    card.appendChild(h);
+    if (note) {
+      var p = document.createElement("p");
+      p.className = "group-note";
+      p.textContent = note;
+      card.appendChild(p);
+    }
+    var photos = document.createElement("div");
+    photos.className = "entry-photos";
+    var shown = [], loaded = 0;
+    images.forEach(function (src) {
+      var im = new Image();
+      im.alt = "";
+      im.onclick = function () { lbImg.src = im.src; lightbox.hidden = false; };
+      im.onload = function () {
+        im.style.flex = (im.naturalWidth / im.naturalHeight) + " 1 0px";
+        if (++loaded === images.length) {
+          // all photos share one row at the same height, never taller than 62% of the window
+          var sum = shown.reduce(function (a, p) { return a + p.naturalWidth / p.naturalHeight; }, 0);
+          photos.style.maxWidth = Math.round(window.innerHeight * 0.62 * sum + 14 * (shown.length - 1)) + "px";
+        }
+      };
+      im.src = "assets/art/" + src;
+      shown.push(im);
+      photos.appendChild(im);
+    });
+    card.appendChild(photos);
+    overlay.appendChild(card);
+    overlay.hidden = false;
+    tip.hidden = true;
+  }
+
+  function renderCalendar(container, groups) {
+    ensurePopups();
+    var months = {};
+    Object.keys(groups).forEach(function (label) {
+      var p = parseDate(label);
+      var key = p.y * 12 + p.m;
+      if (!months[key]) months[key] = { y: p.y, m: p.m, days: {} };
+      months[key].days[p.d] = { label: label, entry: groups[label] };
+    });
+    Object.keys(months).map(Number).sort(function (a, b) { return b - a; }).forEach(function (key) {
+      var mo = months[key];
+      var sec = document.createElement("section");
+      sec.className = "block cal-month";
+      var title = document.createElement("h2");
+      title.className = "block-title";
+      title.textContent = MONTHS[mo.m] + " " + mo.y;
+      sec.appendChild(title);
+      var grid = document.createElement("div");
+      grid.className = "cal-grid";
+      ["S", "M", "T", "W", "T", "F", "S"].forEach(function (d) {
+        var c = document.createElement("div");
+        c.className = "cal-dow";
+        c.textContent = d;
+        grid.appendChild(c);
+      });
+      var first = new Date(mo.y, mo.m, 1).getDay();
+      var count = new Date(mo.y, mo.m + 1, 0).getDate();
+      for (var b = 0; b < first; b++) grid.appendChild(document.createElement("div"));
+      for (var d = 1; d <= count; d++) {
+        var data = mo.days[d];
+        var cell = document.createElement(data ? "button" : "div");
+        cell.className = "cal-day" + (data ? " has" : "");
+        var num = document.createElement("span");
+        num.className = "cal-num";
+        num.textContent = d;
+        if (data) {
+          (function (cell, data) {
+            var images = Array.isArray(data.entry) ? data.entry : data.entry.images;
+            var note = Array.isArray(data.entry) ? "" : (data.entry.note || "");
+            cell.type = "button";
+            cell.setAttribute("aria-label", data.label);
+            var im = new Image();
+            im.alt = "";
+            im.src = "assets/art/" + images[0];
+            cell.appendChild(im);
+            cell.addEventListener("click", function () { openEntry(data.label, data.entry); });
+            cell.addEventListener("pointerenter", function () { showTip(cell, note); });
+            cell.addEventListener("pointerleave", function () { tip.hidden = true; });
+            cell.addEventListener("focus", function () { showTip(cell, note); });
+            cell.addEventListener("blur", function () { tip.hidden = true; });
+          })(cell, data);
+        }
+        cell.appendChild(num);
+        grid.appendChild(cell);
+      }
+      sec.appendChild(grid);
+      container.appendChild(sec);
+    });
+  }
+
   // ---------- photo rows: balanced so no photo is huge and none is tiny ----------
   var galleries = [];
   function layoutGallery(g) {
@@ -184,6 +325,11 @@
     if (!cat) return;
     var v = SITE.art[cat];
     var groups = Array.isArray(v) ? { "": v } : v;
+    var keys = Object.keys(groups);
+    if (keys.length && keys.every(function (k) { return parseDate(k); })) {
+      renderCalendar(gallery, groups);
+      return;
+    }
     var order = Object.keys(groups);
     // if every group is a date (like the steaks), show the newest first
     if (order.length > 1 && order.every(function (k) { return !isNaN(Date.parse(k)); })) {
