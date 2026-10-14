@@ -434,3 +434,16 @@ body.is-home .index .row { border-top: 0; }
   background: radial-gradient(closest-side, rgba(179, 215, 255, 1) 0%, rgba(179, 215, 255, 0.95) 48%, rgba(179, 215, 255, 0) 100%);
 }
 @media (max-width: 760px) { .bar nav a, .subnav a { padding: 6px 12px; margin: -6px -12px; } }
+
+/* active page glow, v2: a quick, eased fall-off to fully transparent (no visible edge), with more room around the word */
+.bar nav a, .subnav a { padding: 8px 28px; margin: -8px -28px; }
+.bar nav a.active, .subnav a.active {
+  background: radial-gradient(closest-side,
+    rgba(179, 215, 255, 0.95) 0%,
+    rgba(179, 215, 255, 0.78) 16%,
+    rgba(179, 215, 255, 0.45) 34%,
+    rgba(179, 215, 255, 0.18) 52%,
+    rgba(179, 215, 255, 0.05) 68%,
+    rgba(179, 215, 255, 0) 82%);
+}
+@media (max-width: 760px) { .bar nav a, .subnav a { padding: 8px 16px; margin: -8px -16px; } }
