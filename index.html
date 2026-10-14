@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lucy Levenson</title>
+<meta name="description" content="Lucy Levenson">
+<link rel="stylesheet" href="style.css?v=8">
+</head>
+<body>
+
+<div class="sky" aria-hidden="true"><div class="backdrop" id="backdrop"></div></div>
+
+<div class="sheet">
+  <header class="bar">
+    <nav>
+      <a href="#home" data-tab="home">Home</a>
+      <a href="#projects" data-tab="projects">Projects</a>
+      <a href="#art" data-tab="art">Art</a>
+    </nav>
+    <a class="gh" data-gh href="https://github.com/lucy-mochi" target="_blank" rel="noopener">GitHub <span>&#8599;</span></a>
+  </header>
+
+  <main>
+    <!-- HOME -->
+    <section class="tab" id="home">
+      <div class="hero-row">
+        <h1 class="name">Lucy Levenson</h1>
+        <div class="hero-side">
+          <a href="mailto:levenson.lucy@gmail.com">Email me <span>&#8250;</span></a>
+        </div>
+      </div>
+
+      <div class="home-grid">
+        <figure class="portrait"><img src="assets/portrait.jpg" alt="Lucy Levenson"></figure>
+        <div class="index">
+          <a class="row" href="#projects">
+            <span class="row-title">Projects</span>
+            <span class="row-meta">Stable; Philosophy Writing and Research</span>
+            <span class="pill">View <span>&#8250;</span></span>
+          </a>
+          <a class="row" href="#art">
+            <span class="row-title">Art</span>
+            <span class="row-meta">Film Scans</span>
+            <span class="pill">View <span>&#8250;</span></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="tab" id="projects">
+      <h1 class="page-title">Projects</h1>
+      <div id="cards"></div>
+    </section>
+
+    <!-- PROJECT DETAIL -->
+    <section class="tab" id="project">
+      <div class="detail" id="detail"></div>
+    </section>
+
+    <!-- ART -->
+    <section class="tab" id="art">
+      <h1 class="page-title">Art</h1>
+      <nav class="subnav" id="subnav"></nav>
+      <div class="gallery" id="gallery"></div>
+    </section>
+  </main>
+</div>
+
+<div class="lightbox" id="lightbox" hidden><img alt=""></div>
+
+<script src="config.js?v=8"></script>
+<script src="script.js?v=8"></script>
+</body>
+</html>
