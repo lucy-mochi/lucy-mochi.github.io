@@ -43,7 +43,7 @@ const SITE = {
       image: ""
     },
     {
-      group: "Philosophy Writing and Research",
+      group: "Philosophy writing and research",
       title: "Excerpt from senior thesis",
       year: "Thesis · Hume and belief under uncertainty",
       description: "Applied Bayesian belief-updating models to Hume's Of Miracles, analyzing how probabilistic frameworks handle testimonial evidence, outlier events, and rational belief under uncertainty.",
@@ -52,7 +52,7 @@ const SITE = {
       image: ""
     },
     {
-      group: "Philosophy Writing and Research",
+      group: "Philosophy writing and research",
       title: "Epistemic utility and horse race betting",
       year: "Seminar paper · Decision theory",
       description: "Computationally modeled Isaac Levi's epistemic utility framework applied to horse race betting, simulating 10,000-trial scenarios to find optimal specificity-versus-error tradeoffs under varying information asymmetry.",
@@ -62,7 +62,7 @@ const SITE = {
       image: ""
     },
     {
-      group: "Philosophy Writing and Research",
+      group: "Philosophy writing and research",
       title: "Sentiment analysis of philosophical texts",
       year: "Research project · Machine learning",
       description: "Fine-tuned a BERT model to perform sentiment analysis on 14,000+ excerpts from 45 philosophical works across cultures and time periods, revealing patterns and the limits of sentiment models on nuanced text.",
@@ -71,7 +71,7 @@ const SITE = {
       image: ""
     },
     {
-      group: "Philosophy Writing and Research",
+      group: "Philosophy writing and research",
       title: "Poincaré and Hempel on mathematical induction",
       year: "Essay · Philosophy of mathematics",
       description: "Poincaré cites the principle of mathematical induction, which he also calls proof by recurrence, as the element in mathematical reasoning that goes beyond mere logical deduction and raises mathematics to the level of a science. How would Hempel disagree? Would his reasons for disagreement be good ones?",
@@ -84,7 +84,7 @@ const SITE = {
       image: ""
     },
     {
-      group: "Philosophy Writing and Research",
+      group: "Philosophy writing and research",
       title: "The moral of Achilles and the Tortoise",
       year: "Essay · Philosophy of mathematics",
       description: "What is really the moral of Lewis Carroll's bit about Achilles and the Tortoise?",
@@ -96,7 +96,7 @@ const SITE = {
       image: ""
     },
     {
-      group: "Philosophy Writing and Research",
+      group: "Philosophy writing and research",
       title: "Benacerraf on what numbers could not be",
       year: "Essay · Philosophy of mathematics",
       description: "Benacerraf's paper “What Numbers Could Not Be” ends with this paradoxical sounding passage: “[T]here are no such things as numbers; which is not to say that there are not at least two prime numbers between 15 and 20.” What did the author mean?",
