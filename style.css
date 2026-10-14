@@ -2,10 +2,10 @@
 @font-face { font-family: "Carlito"; font-style: italic; font-weight: 400; font-display: swap; src: url("assets/fonts/carlito-400-italic.woff2") format("woff2"); }
 
 :root {
-  --ink: #0a0908;
-  --dim: #55626a;
-  --faint: #8999a2;
-  --rule: rgba(10, 9, 8, 0.18);
+  --ink: #000000;
+  --dim: #000000;
+  --faint: #000000;
+  --rule: rgba(0, 0, 0, 0.28);
   --accent: #527b8e;
   --c1: #e8f7ee;
   --c2: #527b8e;
@@ -177,3 +177,19 @@ body {
 .home-grid .index { border-left: 0; padding-left: 0; }
 
 .sheet { max-width: 1580px; }
+
+/* pure white everywhere; bold black outline around the sheet */
+body { background: #ffffff; }
+.sky { display: none; }
+.sheet {
+  background: #ffffff;
+  border: 3px solid var(--ink);
+  box-shadow: none;
+}
+
+/* full-strength black text everywhere (accent blue stays on underlines and arrows only) */
+.back, .refs > em, .gh span, .hero-side span { color: #000; }
+.tags span { color: #000; border-color: rgba(0, 0, 0, 0.4); }
+.row-meta, .detail .meta, .detail p, .name, .page-title { color: #000; }
+
+.pill span, .gh span, .hero-side span { color: inherit; }
