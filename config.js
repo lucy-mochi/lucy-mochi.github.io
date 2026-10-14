@@ -134,6 +134,13 @@ const SITE = {
       ]
     },
     "Steaks": {
+      "August 2, 2026": {
+        note: "Failsteak. Overcooked.",
+        images: [
+          "steaks/2026-08-02/a.jpg",
+          "steaks/2026-08-02/b.jpg"
+        ]
+      },
       "July 17, 2026": {
         note: "Second steak of its kind. Used more porcini powder and result was better.",
         images: [
