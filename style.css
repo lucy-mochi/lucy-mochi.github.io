@@ -447,3 +447,11 @@ body.is-home .index .row { border-top: 0; }
     rgba(179, 215, 255, 0) 82%);
 }
 @media (max-width: 760px) { .bar nav a, .subnav a { padding: 8px 16px; margin: -8px -16px; } }
+
+/* active page, v3: the same tight rectangle hugging the word as the original highlight, filled with a horizontal gradient
+   (strongest along a vertical line in the middle, fading to transparent at the left and right edges) */
+.bar nav a, .subnav a { padding: 0; margin: 0; }
+.bar nav a.active, .subnav a.active {
+  background: linear-gradient(90deg, rgba(179, 215, 255, 0) 0%, rgba(179, 215, 255, 1) 50%, rgba(179, 215, 255, 0) 100%);
+}
+@media (max-width: 760px) { .bar nav a, .subnav a { padding: 0; margin: 0; } }
