@@ -410,3 +410,10 @@ body.is-home .index .row { border-top: 0; }
 .cal-day .cal-num { top: 7px; left: 8px; }
 .cal-day.has .cal-num { top: 4px; left: 4px; padding: 3px 4px; }
 @media (max-width: 760px) { .cal-day { aspect-ratio: 1; } .cal-dow { padding-left: 4px; } .cal-day .cal-num { left: 4px; } .cal-day.has .cal-num { left: 2px; padding: 3px 2px; } }
+
+/* calendar: weekday letters and day numbers are centred in their columns, so the grid reads as spanning the whole box */
+.cal-dow { text-align: center; padding: 0 0 4px 0; }
+.cal-day .cal-num, .cal-day.has .cal-num { left: 50%; transform: translateX(-50%); }
+.cal-day .cal-num { top: 7px; }
+.cal-day.has .cal-num { top: 6px; padding: 3px 7px; }
+@media (max-width: 760px) { .cal-dow { padding-left: 0; } .cal-day .cal-num, .cal-day.has .cal-num { left: 50%; } .cal-day.has .cal-num { padding: 3px 5px; } }

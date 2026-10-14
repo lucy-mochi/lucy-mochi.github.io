@@ -144,6 +144,7 @@ const SITE = {
       },
       "September 6, 2026": {
         note: "Shared with a friend who mixed everything together like a Chipotle bowl.",
+        cover: "steaks/2026-09-06/b.jpg",
         images: [
           "steaks/2026-09-06/a.jpg",
           "steaks/2026-09-06/b.jpg"
@@ -151,6 +152,7 @@ const SITE = {
       },
       "August 30, 2026": {
         note: "Stunning and flawless.",
+        cover: "steaks/2026-08-30/b.jpg",
         images: [
           "steaks/2026-08-30/a.jpg",
           "steaks/2026-08-30/b.jpg"
@@ -158,6 +160,7 @@ const SITE = {
       },
       "August 2, 2026": {
         note: "Failsteak. Overcooked.",
+        cover: "steaks/2026-08-02/b.jpg",
         images: [
           "steaks/2026-08-02/a.jpg",
           "steaks/2026-08-02/b.jpg"
@@ -165,6 +168,7 @@ const SITE = {
       },
       "July 17, 2026": {
         note: "Second steak of its kind. Used more porcini powder and result was better.",
+        cover: "steaks/2026-07-17/b.jpg",
         images: [
           "steaks/2026-07-17/a.jpg",
           "steaks/2026-07-17/b.jpg"
@@ -172,6 +176,7 @@ const SITE = {
       },
       "June 27, 2026": {
         note: "First ever attempt at this particular steak. Came at the end of a steak slump. Revitalized me.",
+        cover: "steaks/2026-06-27/a.jpg",
         images: [
           "steaks/2026-06-27/a.jpg",
           "steaks/2026-06-27/b.jpg"
