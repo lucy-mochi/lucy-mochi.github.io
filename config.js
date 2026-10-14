@@ -22,7 +22,7 @@ const SITE = {
     {
       group: "Projects",
       title: "Monitoring and Assessment in Peru",
-      year: "Internship · Engineers Without Borders",
+      year: "Fieldwork · Engineers Without Borders",
       description: "Work with the Princeton chapter of Engineers Without Borders in La Libertad, Peru. Completed the monitoring and evaluation phase of the Pusunchás potable water project, including a community satisfaction survey and a technical walkthrough of the system, and began the assessment phase of a new irrigation project in Carnachique.",
       tags: ["Engineers Without Borders", "Water", "Peru"],
       links: [
