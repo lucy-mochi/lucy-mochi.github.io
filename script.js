@@ -40,7 +40,7 @@
     }).join("") + "</div>" : "";
     document.getElementById("detail").innerHTML =
       '<a class="back" href="#projects">&#8249; Projects</a>' +
-      '<div class="meta"><em>' + (p.group ? p.group + " · " : "") + (p.year || "") + "</em></div>" +
+      '<div class="meta"><em>' + (p.year || "") + "</em></div>" +
       '<h1 class="page-title">' + p.title + "</h1>" +
       "<p>" + p.description + "</p>" +
       (p.reference ? '<p class="ref"><em>' + p.reference + "</em></p>" : "") +

@@ -159,3 +159,7 @@ body {
 .bar nav a.gh span { color: var(--accent); }
 .bar .mail { font-size: 14px; padding: 6px 16px; }
 .hero-row { grid-template-columns: 1fr; }
+
+/* larger category headings on the Projects page */
+.block-title { font-size: clamp(38px, 5.2vw, 58px); line-height: 1.05; letter-spacing: -0.015em; margin-bottom: 22px; }
+.block { margin-top: 64px; }
