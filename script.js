@@ -413,7 +413,8 @@
     row.addEventListener("mouseleave", function () {
       // the hover (and its growth animation) is already gone by now, so work out the size it had reached: 1 + 6% per second
       var s = 1 + 0.06 * ((performance.now() - t0) / 1000);
-      var secs = Math.min(2.5, 0.5 + (s - 1) * 0.3);
+      // shrink back at 3x the speed it grew (it grows 6% per second, so it shrinks 18% per second), at a steady rate
+      var secs = Math.min(10, Math.max(0.3, (s - 1) / 0.18));
       parts.forEach(function (el) {
         el.style.animation = "none";
         el.style.transition = "none";
@@ -421,7 +422,7 @@
       });
       void row.offsetWidth;
       parts.forEach(function (el) {
-        el.style.transition = "transform " + secs + "s cubic-bezier(.4, 0, .2, 1)";
+        el.style.transition = "transform " + secs + "s linear";
         el.style.transform = "scale(1)";
       });
     });
