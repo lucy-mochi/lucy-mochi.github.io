@@ -8,7 +8,7 @@ const SITE = {
   // `links` are shown on the project's own page (repo, demo, paper). `image` is optional.
   projects: [
     {
-      group: "Personal Projects",
+      group: "Projects",
       title: "Stable",
       year: "Software · Insurance contract management",
       description: "Insurance contract management software for small medical clinics: storage, organization, and insights for their payer contracts.",
@@ -16,6 +16,29 @@ const SITE = {
       links: [
         { label: "Visit the website", url: "https://lucy-mochi.github.io/stable-app/" },
         { label: "GitHub", url: "https://github.com/lucy-mochi/stable-app" }
+      ],
+      image: ""
+    },
+    {
+      group: "Projects",
+      title: "Monitoring and Assessment in Peru",
+      year: "Internship · Engineers Without Borders",
+      description: "Work with the Princeton chapter of Engineers Without Borders in La Libertad, Peru. Completed the monitoring and evaluation phase of the Pusunchás potable water project, including a community satisfaction survey and a technical walkthrough of the system, and began the assessment phase of a new irrigation project in Carnachique.",
+      tags: ["Engineers Without Borders", "Water", "Peru"],
+      links: [
+        { label: "View the presentation", url: "https://drive.google.com/file/d/13Sk00RDpam2yZG_J7QVnIPmXthyZm7w3/view?usp=share_link" },
+        { label: "Princeton School of Environment page", url: "https://environment.princeton.edu/education/internships/interns/lucy-levenson-25-operations-research-and-financial-engineering/" }
+      ],
+      image: ""
+    },
+    {
+      group: "Projects",
+      title: "Archaeology in the Field",
+      year: "Article · Archaeology",
+      description: "A firsthand account of the work/study course Archaeology in the Field (ART/CLA/HLS 304): excavation, survey and lab work in northeastern Greece. Written for the Princeton Department of Art and Archaeology.",
+      tags: ["Archaeology", "Greece", "Writing"],
+      links: [
+        { label: "Read the article", url: "https://artandarchaeology.princeton.edu/whats/news/i-took-archaeology-field-past-summer" }
       ],
       image: ""
     },
