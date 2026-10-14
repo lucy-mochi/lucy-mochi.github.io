@@ -417,3 +417,11 @@ body.is-home .index .row { border-top: 0; }
 .cal-day .cal-num { top: 7px; }
 .cal-day.has .cal-num { top: 6px; padding: 3px 7px; }
 @media (max-width: 760px) { .cal-dow { padding-left: 0; } .cal-day .cal-num, .cal-day.has .cal-num { left: 50%; } .cal-day.has .cal-num { padding: 3px 5px; } }
+
+/* calendar: labels back to the top-left of each day; each day gets a faint light-blue tile so the grid visibly spans the whole box */
+.cal-dow { text-align: left; padding: 0 0 4px 8px; }
+.cal-day .cal-num, .cal-day.has .cal-num { transform: none; }
+.cal-day .cal-num { left: 8px; top: 7px; }
+.cal-day.has .cal-num { left: 4px; top: 4px; padding: 3px 4px; }
+.cal-day { background: rgba(179, 215, 255, 0.16); }
+@media (max-width: 760px) { .cal-dow { padding-left: 4px; } .cal-day .cal-num { left: 4px; } .cal-day.has .cal-num { left: 2px; padding: 3px 2px; } }
