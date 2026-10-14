@@ -156,6 +156,24 @@
     });
   }
 
-  window.addEventListener("hashchange", show);
+
+  // ---------- home photo: sized so the space below it matches the space above ----------
+  function fitPortrait() {
+    var grid = document.querySelector(".home-grid");
+    var portrait = document.querySelector(".portrait");
+    if (!grid || !portrait || !document.getElementById("home").classList.contains("on")) return;
+    if (window.innerWidth <= 760) { grid.style.gridTemplateColumns = ""; return; }
+    grid.style.gridTemplateColumns = "";
+    var top = portrait.getBoundingClientRect().top + window.scrollY;
+    // viewport bottom minus page margin (14), box border (3) and the gap that matches the one above the photo (40)
+    var h = window.innerHeight - 14 - 3 - 40 - top;
+    h = Math.max(360, Math.min(h, 760));
+    grid.style.gridTemplateColumns = Math.round(h * 573 / 802) + "px 1fr";
+  }
+  window.addEventListener("resize", fitPortrait);
+  window.addEventListener("load", fitPortrait);
+
+  window.addEventListener("hashchange", function () { show(); fitPortrait(); });
   show();
+  fitPortrait();
 })();
