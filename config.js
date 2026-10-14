@@ -26,8 +26,8 @@ const SITE = {
       description: "Work with the Princeton chapter of Engineers Without Borders in La Libertad, Peru. Completed the monitoring and evaluation phase of the Pusunchás potable water project, including a community satisfaction survey and a technical walkthrough of the system, and began the assessment phase of a new irrigation project in Carnachique.",
       tags: ["Engineers Without Borders", "Water", "Peru"],
       links: [
-        { label: "View the presentation", url: "https://drive.google.com/file/d/13Sk00RDpam2yZG_J7QVnIPmXthyZm7w3/view?usp=share_link" },
-        { label: "Princeton School of Environment page", url: "https://environment.princeton.edu/education/internships/interns/lucy-levenson-25-operations-research-and-financial-engineering/" }
+        { label: "Read the write-up", url: "https://environment.princeton.edu/education/internships/interns/lucy-levenson-25-operations-research-and-financial-engineering/" },
+        { label: "View the presentation", url: "https://drive.google.com/file/d/13Sk00RDpam2yZG_J7QVnIPmXthyZm7w3/view?usp=share_link" }
       ],
       image: ""
     },
