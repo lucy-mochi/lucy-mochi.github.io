@@ -134,6 +134,13 @@ const SITE = {
       ]
     },
     "Steaks": {
+      "September 21, 2026": {
+        note: "Thin, over too soon.",
+        images: [
+          "steaks/2026-09-21/a.jpg",
+          "steaks/2026-09-21/b.jpg"
+        ]
+      },
       "September 6, 2026": {
         note: "Shared with a friend who mixed everything together like a Chipotle bowl.",
         images: [
