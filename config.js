@@ -134,6 +134,13 @@ const SITE = {
       ]
     },
     "Steaks": {
+      "August 30, 2026": {
+        note: "Stunning and flawless.",
+        images: [
+          "steaks/2026-08-30/a.jpg",
+          "steaks/2026-08-30/b.jpg"
+        ]
+      },
       "August 2, 2026": {
         note: "Failsteak. Overcooked.",
         images: [

@@ -235,13 +235,20 @@
     h.dataset.split = "1";
     h.classList.add("split");
     h.textContent = "";
-    var letters = [];
+    var letters = [], word = null;
     text.split("").forEach(function (ch) {
       var s = document.createElement("span");
       s.className = ch === " " ? "ch sp" : "ch";
       s.setAttribute("aria-hidden", "true");
       s.textContent = ch;
-      h.appendChild(s);
+      if (ch === " ") {
+        word = null;
+        h.appendChild(s);
+      } else {
+        // letters live inside a no-wrap word, so the name only ever wraps between words
+        if (!word) { word = document.createElement("span"); word.className = "word"; h.appendChild(word); }
+        word.appendChild(s);
+      }
       letters.push({ el: s, cx: 0, cy: 0 });
     });
 
