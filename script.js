@@ -108,7 +108,65 @@
     }, 0);
   }
 
+  // ---------- photo rows: balanced so no photo is huge and none is tiny ----------
+  var galleries = [];
+  function layoutGallery(g) {
+    var W = g.grid.clientWidth;
+    if (!W) return;                       // page hidden: laid out again when shown / resized
+    var items = g.items.filter(function (it) { return it.ok && it.ar > 0; });
+    var n = items.length;
+    if (!n) return;
+    var GAP = 14;
+    var T = Math.max(260, Math.min(window.innerHeight * 0.5, 600));   // preferred row height for this window
+    var HMAX = T * 1.25;                                              // rows that would be taller are not stretched
+    function rowH(i, j) {
+      var sum = 0;
+      for (var k = i; k < j; k++) sum += items[k].ar;
+      return (W - GAP * (j - i - 1)) / sum;
+    }
+    // pick the row breaks (keeping the order) whose row heights are closest to the preferred height
+    var best = [0], from = [0];
+    for (var j = 1; j <= n; j++) {
+      best[j] = Infinity;
+      for (var i = 0; i < j; i++) {
+        var cost = best[i] + Math.pow(rowH(i, j) - T, 2);
+        if (cost < best[j]) { best[j] = cost; from[j] = i; }
+      }
+    }
+    var rows = [], end = n;
+    while (end > 0) { rows.unshift([from[end], end]); end = from[end]; }
+    g.grid.innerHTML = "";
+    rows.forEach(function (r) {
+      var row = document.createElement("div");
+      row.className = "jrow";
+      var h = rowH(r[0], r[1]), capped = h > HMAX;
+      for (var k = r[0]; k < r[1]; k++) {
+        var it = items[k];
+        it.fig.style.flex = capped ? "0 0 " + (it.ar * HMAX) + "px" : it.ar + " 1 0px";
+        row.appendChild(it.fig);
+      }
+      g.grid.appendChild(row);
+    });
+  }
+  function registerGallery(grid, items) {
+    var g = { grid: grid, items: items };
+    galleries.push(g);
+    var pending = items.length;
+    function done() { if (--pending === 0) layoutGallery(g); }
+    items.forEach(function (it) {
+      it.im.onload = function () { it.ar = it.im.naturalWidth / it.im.naturalHeight; done(); };
+      it.im.onerror = function () { it.ok = false; done(); };
+      it.im.src = it.src;
+    });
+  }
+  var relayoutTimer = null;
+  window.addEventListener("resize", function () {
+    clearTimeout(relayoutTimer);
+    relayoutTimer = setTimeout(function () { galleries.forEach(layoutGallery); }, 120);
+  });
+
   function renderArt(catSlug) {
+    galleries.length = 0;
     var names = Object.keys(SITE.art).filter(function (k) { return count(SITE.art[k]); });
     var cat = names.filter(function (k) { return slug(k) === catSlug; })[0] || names[0];
     var sub = document.getElementById("subnav");
@@ -141,7 +199,7 @@
         sec.appendChild(h);
       }
       var grid = document.createElement("div");
-      grid.className = "masonry";
+      grid.className = "jgallery";
       var entry = groups[g];
       var list = Array.isArray(entry) ? entry : entry.images;
       if (!Array.isArray(entry) && entry.note) {
@@ -150,24 +208,18 @@
         note.textContent = entry.note;
         sec.appendChild(note);
       }
-      list.forEach(function (p) {
+      var items = list.map(function (p) {
         var fig = document.createElement("figure");
         fig.className = "frame";
         var im = new Image();
         im.alt = "";
-        im.loading = "lazy";
-        im.onerror = function () { fig.remove(); };
-        im.onload = function () {
-          var ar = im.naturalWidth / im.naturalHeight;
-          fig.style.flex = ar + " 1 " + Math.round(ar * 250) + "px";
-        };
         im.onclick = function () { lbImg.src = im.src; lightbox.hidden = false; };
-        im.src = "assets/art/" + p;
         fig.appendChild(im);
-        grid.appendChild(fig);
+        return { fig: fig, im: im, ar: 0, ok: true, src: "assets/art/" + p };
       });
       sec.appendChild(grid);
       gallery.appendChild(sec);
+      registerGallery(grid, items);
     });
   }
 
@@ -273,7 +325,7 @@
 
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-    var RADIUS = 170, timer = null;
+    var RADIUS = 110, timer = null;
     function release() {
       letters.forEach(function (l) {
         l.el.style.transition = "transform 1.1s cubic-bezier(.2, 1.7, .4, 1)";
@@ -285,9 +337,9 @@
       letters.forEach(function (l) {
         var dx = l.cx - px, dy = l.cy - py, d = Math.sqrt(dx * dx + dy * dy) || 1;
         if (d < RADIUS) {
-          var f = 1 - d / RADIUS, push = f * f * 70;
+          var f = 1 - d / RADIUS, push = f * f * 26;
           l.el.style.transition = "transform .16s ease-out";
-          l.el.style.transform = "translate(" + (dx / d) * push + "px," + (dy / d) * push + "px) rotate(" + (dx / RADIUS) * f * 28 + "deg)";
+          l.el.style.transform = "translate(" + (dx / d) * push + "px," + (dy / d) * push + "px) rotate(" + (dx / RADIUS) * f * 10 + "deg)";
         } else {
           l.el.style.transition = "transform .5s ease-out";
           l.el.style.transform = "none";
