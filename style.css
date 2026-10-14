@@ -398,3 +398,7 @@ body.is-home .index .row { border-top: 0; }
 .entry-card { width: min(1200px, 100%); }
 .entry-photos { flex-wrap: nowrap; }
 .entry-photos img { flex: 1 1 0; min-width: 0; width: 0; max-height: none; height: auto; }
+
+/* note sits flush-left under "Email me" (its width is tuned in script so both edges line up) */
+.mail-wrap { align-items: flex-start; }
+.mail-note { text-align: left; }
