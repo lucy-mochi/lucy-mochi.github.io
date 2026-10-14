@@ -242,3 +242,26 @@ body { padding: 14px; }
 body.is-home .bar { border-bottom: 0; }
 body.is-home .hero-row { border-bottom: 0; }
 body.is-home .index .row { border-top: 0; }
+
+/* no divider lines anywhere (box outline, buttons and tags keep their outlines) */
+.bar, .hero-row, .row, .rows, .index, .refs, .subnav, .hero-side, .home-grid .index { border: 0; }
+
+/* buttons: no pill outline or fill, just blue text */
+.pill, .pill.primary, .bar .mail, .links .pill {
+  background: none; border: 0; box-shadow: none; border-radius: 0; padding: 0; color: #527b8e;
+}
+.pill span, .pill.primary span { color: inherit; }
+.pill:hover, .pill.primary:hover, .row:hover .pill { background: none; color: #527b8e; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; }
+.pill.primary { font-size: 26px; }
+.links .pill { font-size: 18px; }
+.bar .mail { font-size: 15px; }
+
+/* button text: gradient from black to the blue (clipped to the letters) */
+.pill, .pill.primary, .bar .mail, .links .pill,
+.pill:hover, .pill.primary:hover, .row:hover .pill {
+  background: linear-gradient(90deg, #000000 0%, #527b8e 100%);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #527b8e; /* underline colour on hover; letters take the gradient */
+}
+.pill span, .pill.primary span { color: inherit; -webkit-text-fill-color: transparent; }
