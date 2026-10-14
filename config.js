@@ -8,7 +8,7 @@ const SITE = {
   // `links` are shown on the project's own page (repo, demo, paper). `image` is optional.
   projects: [
     {
-      group: "Projects",
+      group: "Things I’ve made or done",
       title: "Stable",
       year: "Software · Insurance contract management",
       description: "Insurance contract management software for small medical clinics: storage, organization, and insights for their payer contracts.",
@@ -20,7 +20,7 @@ const SITE = {
       image: ""
     },
     {
-      group: "Projects",
+      group: "Things I’ve made or done",
       title: "Monitoring and Assessment in Peru",
       year: "Fieldwork · Engineers Without Borders",
       description: "Work with the Princeton chapter of Engineers Without Borders in La Libertad, Peru. Completed the monitoring and evaluation phase of the Pusunchás potable water project, including a community satisfaction survey and a technical walkthrough of the system, and began the assessment phase of a new irrigation project in Carnachique.",
@@ -32,7 +32,7 @@ const SITE = {
       image: ""
     },
     {
-      group: "Projects",
+      group: "Things I’ve made or done",
       title: "Archaeology in the Field",
       year: "Article · Archaeology",
       description: "A firsthand account of the work/study course Archaeology in the Field (ART/CLA/HLS 304): excavation, survey and lab work in northeastern Greece. Written for the Princeton Department of Art and Archaeology.",
