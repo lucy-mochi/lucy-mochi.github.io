@@ -114,8 +114,6 @@ body {
 .refs > em { color: var(--accent); font-size: 15px; }
 .inline { width: fit-content; color: var(--ink); border-bottom: 1px solid var(--rule); line-height: 1.4; transition: border-color .2s; }
 .inline:hover { border-color: var(--accent); }
-.tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 26px; }
-.tags span { font-size: 13px; font-style: italic; padding: 4px 12px; border-radius: 999px; border: 1px solid var(--rule); color: var(--dim); }
 .links { margin-top: 30px; display: flex; gap: 12px; flex-wrap: wrap; }
 .links .pill { font-size: 15px; padding: 9px 20px; }
 
@@ -189,7 +187,6 @@ body { background: #ffffff; }
 
 /* full-strength black text everywhere (accent blue stays on underlines and arrows only) */
 .back, .refs > em, .gh span, .hero-side span { color: #000; }
-.tags span { color: #000; border-color: rgba(0, 0, 0, 0.4); }
 .row-meta, .detail .meta, .detail p, .name, .page-title { color: #000; }
 
 .pill span, .gh span, .hero-side span { color: inherit; }
@@ -206,7 +203,6 @@ body { padding: 14px; }
 .bar nav a.active, .subnav a.active { border-bottom-color: #000; }
 .pill { border: 1.5px solid #000; }
 .pill:hover, .row:hover .pill { border-color: #000; }
-.tags span { border: 1px solid #000; }
 .inline { border-bottom: 2px solid #000; }
 .inline:hover { border-color: #000; }
 .hero-side, .home-grid .index { border-color: #000; }

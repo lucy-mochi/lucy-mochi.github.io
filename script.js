@@ -38,7 +38,6 @@
     }
     var primary = all.length ? '<div class="primary-link">' + pill(all[0], "primary") + "</div>" : "";
     var others = all.slice(1).map(function (l) { return pill(l, ""); }).join("");
-    var tags = (p.tags || []).map(function (t) { return "<span>" + t + "</span>"; }).join("");
     var refs = p.references ? '<div class="refs"><em>References</em>' + p.references.map(function (r) {
       return '<a class="inline" href="' + r.url + '" target="_blank" rel="noopener">' + r.label + "</a>";
     }).join("") + "</div>" : "";
@@ -50,7 +49,6 @@
       "<p>" + p.description + "</p>" +
       (p.reference ? '<p class="ref"><em>' + p.reference + "</em></p>" : "") +
       refs +
-      (tags ? '<div class="tags">' + tags + "</div>" : "") +
       (others ? '<div class="links">' + others + "</div>" : "");
   }
 
