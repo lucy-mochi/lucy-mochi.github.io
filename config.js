@@ -132,6 +132,15 @@ const SITE = {
         "film-scans/black-and-white/calla-2.jpg",
         "film-scans/black-and-white/calla-3.jpg"
       ]
+    },
+    "Steaks": {
+      "June 27, 2026": {
+        note: "First ever attempt at this particular steak. Came at the end of a steak slump. Revitalized me.",
+        images: [
+          "steaks/2026-06-27/a.jpg",
+          "steaks/2026-06-27/b.jpg"
+        ]
+      }
     }
   }
 };

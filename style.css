@@ -339,3 +339,5 @@ body.is-home .index .row { border-top: 0; }
   margin: calc(44px - 0.06em) 0 calc(6px - 0.32em);
 }
 .detail .page-title { margin: calc(10px - 0.06em) 0 calc(26px - 0.32em); }
+
+.group-note { max-width: 100ch; }
