@@ -134,6 +134,13 @@ const SITE = {
       ]
     },
     "Steaks": {
+      "July 17, 2026": {
+        note: "Second steak of its kind. Used more porcini powder and result was better.",
+        images: [
+          "steaks/2026-07-17/a.jpg",
+          "steaks/2026-07-17/b.jpg"
+        ]
+      },
       "June 27, 2026": {
         note: "First ever attempt at this particular steak. Came at the end of a steak slump. Revitalized me.",
         images: [

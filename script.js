@@ -126,7 +126,12 @@
     if (!cat) return;
     var v = SITE.art[cat];
     var groups = Array.isArray(v) ? { "": v } : v;
-    Object.keys(groups).forEach(function (g) {
+    var order = Object.keys(groups);
+    // if every group is a date (like the steaks), show the newest first
+    if (order.length > 1 && order.every(function (k) { return !isNaN(Date.parse(k)); })) {
+      order.sort(function (a, b) { return Date.parse(b) - Date.parse(a); });
+    }
+    order.forEach(function (g) {
       var sec = document.createElement("section");
       sec.className = "block";
       if (g) {
