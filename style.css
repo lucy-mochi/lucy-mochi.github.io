@@ -274,3 +274,8 @@ body.is-home .index .row { border-top: 0; }
   -webkit-text-fill-color: transparent;
   text-decoration-color: #000000;
 }
+
+/* tighter home spacing now that the divider lines are gone: 24px above and below the photo */
+.hero-row { padding-bottom: 0; }
+.home-grid { margin-top: 24px; }
+.sheet { padding-bottom: 24px; }

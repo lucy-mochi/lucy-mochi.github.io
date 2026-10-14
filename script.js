@@ -166,8 +166,8 @@
     if (window.innerWidth <= 760) { grid.style.gridTemplateColumns = ""; return; }
     grid.style.gridTemplateColumns = "";
     var top = portrait.getBoundingClientRect().top + window.scrollY;
-    // viewport bottom minus page margin (14), box border (3) and the gap that matches the one above the photo (40)
-    var h = window.innerHeight - 14 - 3 - 40 - top;
+    // viewport bottom minus page margin (14), box border (3) and the gap that matches the one above the photo (24)
+    var h = window.innerHeight - 14 - 3 - 24 - top;
     h = Math.max(360, Math.min(h, 760));
     grid.style.gridTemplateColumns = Math.round(h * 573 / 802) + "px 1fr";
   }
