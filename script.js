@@ -403,27 +403,29 @@
   window.addEventListener("load", fitPortrait);
 
 
-  // ---------- home rows: slow, endless growth while hovered (CSS animation; this only eases it back) ----------
+  // ---------- home rows: slow, endless growth while hovered (CSS animation); on release they shrink back smoothly ----------
   document.querySelectorAll(".index .row").forEach(function (row) {
-    var parts = row.querySelectorAll(".row-title, .row-meta");
+    var parts = row.querySelectorAll(".row-title, .row-meta"), t0 = 0;
     row.addEventListener("mouseenter", function () {
+      t0 = performance.now();
       parts.forEach(function (el) { el.style.animation = ""; el.style.transition = "none"; el.style.transform = ""; });
     });
     row.addEventListener("mouseleave", function () {
+      // the hover (and its growth animation) is already gone by now, so work out the size it had reached: 1 + 6% per second
+      var s = 1 + 0.06 * ((performance.now() - t0) / 1000);
+      var secs = Math.min(2.5, 0.5 + (s - 1) * 0.3);
       parts.forEach(function (el) {
-        var current = getComputedStyle(el).transform;
         el.style.animation = "none";
         el.style.transition = "none";
-        el.style.transform = current;
+        el.style.transform = "scale(" + s + ")";
       });
       void row.offsetWidth;
       parts.forEach(function (el) {
-        el.style.transition = "transform .6s cubic-bezier(.2,.7,.2,1)";
+        el.style.transition = "transform " + secs + "s cubic-bezier(.4, 0, .2, 1)";
         el.style.transform = "scale(1)";
       });
     });
   });
-
 
   // ---------- front-page name: letters are pushed around by the cursor, then spring back ----------
   (function () {
