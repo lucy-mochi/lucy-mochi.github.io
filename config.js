@@ -114,8 +114,9 @@ const SITE = {
   backdrop: "assets/design/backdrop.jpg",   // full-page glowing wash behind everything
   heroImage: "assets/design/hero.jpg",      // fills the glowing orb on the home tab
 
-  // Art tab. Each key is a sub-tab. A sub-tab is either a list of image paths,
-  // or groups of them ({ groupName: [paths] }), shown under small headings.
+  // "Pictures" tab. Each key is a sub-tab. A sub-tab is either a list of image paths,
+  // or groups of them ({ groupName: [paths] }) shown under headings. A group can also be
+  // { note: "a comment", images: [paths] } to show a comment under the heading.
   // Paths are relative to assets/art/. Empty sub-tabs are hidden.
   art: {
     "Film Scans": {

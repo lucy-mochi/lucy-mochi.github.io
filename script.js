@@ -103,7 +103,9 @@
   document.addEventListener("keydown", function (e) { if (e.key === "Escape") lightbox.hidden = true; });
 
   function count(v) {
-    return Array.isArray(v) ? v.length : Object.keys(v).reduce(function (n, k) { return n + v[k].length; }, 0);
+    return Array.isArray(v) ? v.length : Object.keys(v).reduce(function (n, k) {
+      return n + (Array.isArray(v[k]) ? v[k].length : v[k].images.length);
+    }, 0);
   }
 
   function renderArt(catSlug) {
@@ -135,7 +137,15 @@
       }
       var grid = document.createElement("div");
       grid.className = "masonry";
-      groups[g].forEach(function (p) {
+      var entry = groups[g];
+      var list = Array.isArray(entry) ? entry : entry.images;
+      if (!Array.isArray(entry) && entry.note) {
+        var note = document.createElement("p");
+        note.className = "group-note";
+        note.textContent = entry.note;
+        sec.appendChild(note);
+      }
+      list.forEach(function (p) {
         var fig = document.createElement("figure");
         fig.className = "frame";
         var im = new Image();

@@ -325,3 +325,5 @@ body.is-home .index .row { border-top: 0; }
   padding: 0.06em 0.05em 0.32em; margin: -0.06em -0.05em -0.32em;
   will-change: transform;
 }
+
+.group-note { font-size: 18px; line-height: 1.5; color: #000; margin: 0 0 18px; max-width: 70ch; }
