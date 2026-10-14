@@ -123,7 +123,7 @@ const SITE = {
       "Color": [
         "film-scans/color/hotel-window.jpg",
         "film-scans/color/dunes.jpg",
-        "film-scans/color/desk.jpg",
+        "film-scans/color/shop.jpg",
         "film-scans/color/rooftops.jpg",
         "film-scans/color/street-dusk.jpg"
       ],
