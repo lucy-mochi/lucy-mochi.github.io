@@ -79,8 +79,7 @@
     a.href = "#projects/" + i;
     a.innerHTML =
       '<span class="row-title">' + p.title + "</span>" +
-      '<span class="row-meta"><em>' + (p.year || "") + "</em></span>" +
-      '<span class="pill">View <span>&#8250;</span></span>';
+      '<span class="row-meta"><em>' + (p.year || "") + "</em></span>";
     rows.appendChild(a);
   });
 
@@ -173,6 +172,25 @@
   }
   window.addEventListener("resize", fitPortrait);
   window.addEventListener("load", fitPortrait);
+
+
+  // ---------- home rows: slow, endless growth while hovered (CSS animation; this only eases it back) ----------
+  document.querySelectorAll(".index .row").forEach(function (row) {
+    row.addEventListener("mouseenter", function () {
+      row.style.animation = "";
+      row.style.transition = "none";
+      row.style.transform = "";
+    });
+    row.addEventListener("mouseleave", function () {
+      var current = getComputedStyle(row).transform;
+      row.style.animation = "none";
+      row.style.transition = "none";
+      row.style.transform = current;
+      void row.offsetWidth;
+      row.style.transition = "transform .6s cubic-bezier(.2,.7,.2,1)";
+      row.style.transform = "scale(1)";
+    });
+  });
 
   window.addEventListener("hashchange", function () { show(); fitPortrait(); });
   show();

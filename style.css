@@ -279,3 +279,25 @@ body.is-home .index .row { border-top: 0; }
 .hero-row { padding-bottom: 0; }
 .home-grid { margin-top: 24px; }
 .sheet { padding-bottom: 24px; }
+
+/* no View buttons: rows are two columns and the whole row is the link */
+.row { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); }
+@media (max-width: 760px) { .row { grid-template-columns: 1fr; } .row-meta { grid-column: 1; grid-row: auto; } }
+
+/* home rows: growth is driven by script (slow, endless while hovered); replace the old hover effect */
+.sheet { overflow: hidden; }
+.index .row { transform-origin: left center; position: relative; will-change: transform; }
+.index .row:hover { background: none; padding-left: 0; z-index: 3; }
+
+/* home rows: while hovered, grow slowly and never stop (about 6% per second) */
+.index .row:hover { animation: grow-forever 2000s linear forwards; }
+@keyframes grow-forever { from { transform: scale(1); } to { transform: scale(121); } }
+
+/* name: black, light blue in the middle, black again at the end */
+.name {
+  width: fit-content;
+  background: linear-gradient(90deg, #000000 0%, #b3d7ff 50%, #000000 100%);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #000000;
+}
