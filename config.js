@@ -133,7 +133,7 @@ const SITE = {
         "film-scans/black-and-white/calla-3.jpg"
       ]
     },
-    "Steaks": {
+    "Steak Calendar": {
       "September 21, 2026": {
         note: "Thin, over too soon.",
         images: [
