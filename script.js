@@ -242,6 +242,7 @@
 
     // each letter shows its own slice of one continuous black / light-blue / black gradient
     function layout() {
+      if (!h.offsetWidth) return;   // home page is hidden right now: measure when it is shown again
       var w = h.offsetWidth, hb = h.getBoundingClientRect();
       letters.forEach(function (l) {
         l.el.style.transform = "none";
@@ -254,6 +255,8 @@
     }
     layout();
     window.addEventListener("resize", layout);
+    // re-measure whenever you navigate (after the page has switched), so returning to Home always shows the name
+    window.addEventListener("hashchange", function () { setTimeout(layout, 0); setTimeout(layout, 120); });
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(layout);
 
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
