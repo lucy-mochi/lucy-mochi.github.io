@@ -499,39 +499,6 @@
   })();
 
 
-  // ---------- tiny note under "Email me": match its left and right edges to the link exactly ----------
-  (function () {
-    var link = document.querySelector(".mail-link"), note = document.querySelector(".mail-note");
-    if (!link || !note) return;
-    var ctx = document.createElement("canvas").getContext("2d");
-    function bearings(el, firstChar, lastChar) {
-      var cs = getComputedStyle(el);
-      ctx.font = cs.fontSize + " " + cs.fontFamily;
-      var f = ctx.measureText(firstChar), l = ctx.measureText(lastChar);
-      return { left: -f.actualBoundingBoxLeft, right: l.width - l.actualBoundingBoxRight };
-    }
-    function textWidth(el) {
-      var r = document.createRange();
-      r.selectNodeContents(el);
-      return r.getBoundingClientRect().width;
-    }
-    function align() {
-      if (!link.offsetWidth) return;
-      note.style.letterSpacing = "";
-      note.style.marginLeft = "";
-      var lb = bearings(link, "E", "\u2197"), nb = bearings(note, "I", "u");
-      var linkInk = textWidth(link) - lb.left - lb.right;
-      var noteInk = textWidth(note) - nb.left - nb.right;
-      var base = parseFloat(getComputedStyle(note).letterSpacing) || 0;
-      var gaps = Math.max(1, note.textContent.length - 1);
-      note.style.letterSpacing = (base + (linkInk - noteInk) / gaps) + "px";
-      note.style.marginLeft = (lb.left - nb.left) + "px";
-    }
-    align();
-    window.addEventListener("resize", align);
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(align);
-  })();
-
   window.addEventListener("hashchange", function () { show(); fitPortrait(); });
   show();
   fitPortrait();

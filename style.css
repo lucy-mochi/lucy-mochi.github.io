@@ -342,10 +342,8 @@ body.is-home .index .row { border-top: 0; }
 
 .group-note { max-width: 100ch; }
 
-/* tiny line under "Email me" */
 .bar { align-items: flex-start; }
 .mail-wrap { display: flex; flex-direction: column; align-items: flex-end; }
-.mail-note { font-size: 11px; letter-spacing: 0.02em; line-height: 1.2; color: #000; margin-top: -1px; white-space: nowrap; }
 @media (max-width: 760px) {
   .bar { flex-wrap: wrap; gap: 6px 16px; }
   .mail-wrap { align-items: flex-start; }
@@ -362,9 +360,7 @@ body.is-home .index .row { border-top: 0; }
 .jrow .frame { margin: 0; min-width: 0; border-radius: 10px; overflow: hidden; }
 .jrow .frame img { width: 100%; height: auto; display: block; cursor: zoom-in; }
 
-.mail-note { font-size: 8.25px; }
 
-.mail-note { font-size: 6px; }
 
 /* ---------- calendar ---------- */
 .cal-month { margin-top: 36px; }
@@ -399,9 +395,7 @@ body.is-home .index .row { border-top: 0; }
 .entry-photos { flex-wrap: nowrap; }
 .entry-photos img { flex: 1 1 0; min-width: 0; width: 0; max-height: none; height: auto; }
 
-/* note sits flush-left under "Email me" (its width is tuned in script so both edges line up) */
 .mail-wrap { align-items: flex-start; }
-.mail-note { text-align: left; }
 
 /* calendar: full width of the box; weekday letters and day numbers share one inset */
 .cal-grid { max-width: none; width: 100%; gap: 10px; }
