@@ -296,3 +296,8 @@ body.is-home .index .row { border-top: 0; }
   -webkit-text-fill-color: transparent;
   color: #000000;
 }
+
+/* give the gradient text room for descenders (the g) and edges, without moving anything */
+.name { padding: 0.04em 0.06em 0.22em 0; margin: -0.04em 0 -0.22em 0; }
+
+.name { padding: 0.06em 0.08em 0.32em 0; margin: -0.06em 0 -0.32em 0; }
