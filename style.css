@@ -32,7 +32,7 @@ body {
   color: var(--ink);
   background: linear-gradient(155deg, var(--bg1) 0%, var(--bg2) 55%, var(--bg3) 100%) fixed;
   -webkit-font-smoothing: antialiased;
-  padding: 22px 16px 48px;
+  padding: 14px 10px 40px;
 }
 
 .sky { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
@@ -41,8 +41,8 @@ body {
 
 /* ---------- the sheet ---------- */
 .sheet {
-  max-width: 1080px; margin: 0 auto; min-height: calc(100vh - 70px);
-  padding: 26px clamp(20px, 4vw, 48px) 56px;
+  max-width: 1360px; margin: 0 auto; min-height: calc(100vh - 54px);
+  padding: 22px clamp(18px, 2.4vw, 34px) 56px;
   background:
     linear-gradient(180deg, rgba(232, 247, 238, 0.26) 0%, rgba(82, 123, 142, 0.08) 220px, rgba(255, 255, 255, 0) 360px),
     var(--sheet);
@@ -172,3 +172,8 @@ body {
 .pill.primary { font-size: 19px; padding: 15px 34px; background: var(--accent); border-color: var(--accent); color: #fff; box-shadow: 0 8px 22px rgba(82, 123, 142, 0.32); }
 .pill.primary span { color: #fff; }
 .pill.primary:hover { background: #3f6475; border-color: #3f6475; }
+
+/* no floating vertical rule beside the home index */
+.home-grid .index { border-left: 0; padding-left: 0; }
+
+.sheet { max-width: 1580px; }
