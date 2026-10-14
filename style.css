@@ -163,3 +163,6 @@ body {
 /* larger category headings on the Projects page */
 .block-title { font-size: clamp(38px, 5.2vw, 58px); line-height: 1.05; letter-spacing: -0.015em; margin-bottom: 22px; }
 .block { margin-top: 64px; }
+
+.block-title { font-size: clamp(30px, 4vw, 44px); margin-bottom: 20px; }
+.block { margin-top: 56px; }
