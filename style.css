@@ -218,14 +218,14 @@ body { padding: 14px; }
 .bar nav { gap: 14px; margin-left: -10px; }
 .bar nav a, .subnav a { padding: 4px 10px; border-bottom: 0; border-radius: 4px; }
 .subnav { gap: 10px; margin-left: -10px; }
-.bar nav a.active, .subnav a.active { background: #ffe66d; color: #000; border-bottom: 0; }
-.bar nav a:not(.active):hover, .subnav a:not(.active):hover { background: rgba(255, 230, 109, 0.4); }
+.bar nav a.active, .subnav a.active { background: #b3d7ff; color: #000; border-bottom: 0; }
+.bar nav a:not(.active):hover, .subnav a:not(.active):hover { background: rgba(179, 215, 255, 0.5); }
 
-/* active page: a plain highlighter-style yellow behind the text, like selected text */
+/* active page: standard Mac selection blue behind the text, like highlighted text */
 .bar nav { gap: 28px; margin-left: 0; }
 .subnav { gap: 24px; margin-left: 0; }
 .bar nav a, .subnav a { padding: 0; border: 0; border-radius: 0; line-height: 1.25; background: none; }
-.bar nav a.active, .subnav a.active { background: #ffff00; color: #000; }
+.bar nav a.active, .subnav a.active { background: #b3d7ff; color: #000; }
 .bar nav a:not(.active):hover, .subnav a:not(.active):hover { background: none; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; }
 
 /* only the box border stays thick; dividers and buttons are fine black lines */
