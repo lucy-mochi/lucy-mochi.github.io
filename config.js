@@ -21,11 +21,11 @@ const SITE = {
     },
     {
       group: "Philosophy Writing and Research",
-      title: "Senior thesis",
+      title: "Excerpt from senior thesis",
       year: "Thesis · Hume and belief under uncertainty",
       description: "Applied Bayesian belief-updating models to Hume's Of Miracles, analyzing how probabilistic frameworks handle testimonial evidence, outlier events, and rational belief under uncertainty.",
       tags: ["Bayesian", "Philosophy"],
-      links: [{ label: "Read the paper", url: "assets/papers/Hume_miracles.pdf" }],
+      links: [{ label: "Read the excerpt", url: "assets/papers/Hume_miracles.pdf" }],
       image: ""
     },
     {
