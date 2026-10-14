@@ -233,3 +233,7 @@ body { padding: 14px; }
 
 /* no line above the first home row (Projects) */
 .index .row:first-child { border-top: 0; }
+
+/* project names in the lists are smaller; group headings a touch smaller */
+.block-title { font-size: clamp(26px, 3.4vw, 38px); }
+.row-title { font-size: clamp(19px, 2.2vw, 24px); }
