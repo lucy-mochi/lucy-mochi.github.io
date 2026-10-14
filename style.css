@@ -285,7 +285,7 @@ body.is-home .index .row { border-top: 0; }
 .index .row:hover { background: none; padding-left: 0; z-index: 3; }
 
 /* home rows: while hovered, grow slowly and never stop (about 6% per second) */
-.index .row:hover { animation: grow-forever 2000s linear forwards; }
+
 @keyframes grow-forever { from { transform: scale(1); } to { transform: scale(121); } }
 
 /* name: black, light blue in the middle, black again at the end */
@@ -301,3 +301,15 @@ body.is-home .index .row { border-top: 0; }
 .name { padding: 0.04em 0.06em 0.22em 0; margin: -0.04em 0 -0.22em 0; }
 
 .name { padding: 0.06em 0.08em 0.32em 0; margin: -0.06em 0 -0.32em 0; }
+
+/* home rows: the title grows from the left edge, the right-hand text grows from the right edge (stays right-aligned) */
+.index .row-title, .index .row-meta { position: relative; }
+.index .row:hover .row-title { transform-origin: left center; animation: grow-forever 2000s linear forwards; z-index: 3; }
+.index .row:hover .row-meta { transform-origin: right center; animation: grow-forever 2000s linear forwards; z-index: 3; }
+.index .row { transform: none !important; animation: none !important; }
+@media (min-width: 761px) { .index .row-meta { text-align: right; justify-self: end; } }
+
+/* Email me: plain black text with the same blue arrow as GitHub (no gradient, no button) */
+.mail-link { font-size: 15px; letter-spacing: 0.02em; color: #000000; padding: 4px 0; background: none; -webkit-text-fill-color: #000000; }
+.mail-link span { color: #527b8e; -webkit-text-fill-color: #527b8e; }
+.mail-link:hover { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; }

@@ -176,19 +176,22 @@
 
   // ---------- home rows: slow, endless growth while hovered (CSS animation; this only eases it back) ----------
   document.querySelectorAll(".index .row").forEach(function (row) {
+    var parts = row.querySelectorAll(".row-title, .row-meta");
     row.addEventListener("mouseenter", function () {
-      row.style.animation = "";
-      row.style.transition = "none";
-      row.style.transform = "";
+      parts.forEach(function (el) { el.style.animation = ""; el.style.transition = "none"; el.style.transform = ""; });
     });
     row.addEventListener("mouseleave", function () {
-      var current = getComputedStyle(row).transform;
-      row.style.animation = "none";
-      row.style.transition = "none";
-      row.style.transform = current;
+      parts.forEach(function (el) {
+        var current = getComputedStyle(el).transform;
+        el.style.animation = "none";
+        el.style.transition = "none";
+        el.style.transform = current;
+      });
       void row.offsetWidth;
-      row.style.transition = "transform .6s cubic-bezier(.2,.7,.2,1)";
-      row.style.transform = "scale(1)";
+      parts.forEach(function (el) {
+        el.style.transition = "transform .6s cubic-bezier(.2,.7,.2,1)";
+        el.style.transform = "scale(1)";
+      });
     });
   });
 
