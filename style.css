@@ -153,3 +153,9 @@ body {
 .home-grid .index { border-left: 1px solid var(--rule); padding-left: clamp(24px, 4vw, 52px); border-bottom: 0; }
 .home-grid { gap: clamp(24px, 4vw, 52px); }
 @media (max-width: 760px) { .home-grid .index { border-left: 0; padding-left: 0; } }
+
+/* menu: GitHub sits with the other links; Email me is the contact button at the right */
+.bar nav a.gh { font-style: normal; }
+.bar nav a.gh span { color: var(--accent); }
+.bar .mail { font-size: 14px; padding: 6px 16px; }
+.hero-row { grid-template-columns: 1fr; }
