@@ -363,3 +363,5 @@ body.is-home .index .row { border-top: 0; }
 .jrow .frame img { width: 100%; height: auto; display: block; cursor: zoom-in; }
 
 .mail-note { font-size: 8.25px; }
+
+.mail-note { font-size: 6px; }
