@@ -237,3 +237,8 @@ body { padding: 14px; }
 /* project names in the lists are smaller; group headings a touch smaller */
 .block-title { font-size: clamp(26px, 3.4vw, 38px); }
 .row-title { font-size: clamp(19px, 2.2vw, 24px); }
+
+/* home page: no divider lines (the box outline stays) */
+body.is-home .bar { border-bottom: 0; }
+body.is-home .hero-row { border-bottom: 0; }
+body.is-home .index .row { border-top: 0; }

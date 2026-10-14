@@ -26,6 +26,7 @@
     document.querySelectorAll("[data-tab]").forEach(function (a) {
       a.classList.toggle("active", a.dataset.tab === (h === "project" ? "projects" : h));
     });
+    document.body.classList.toggle("is-home", h === "home");
     window.scrollTo(0, 0);
   }
 
