@@ -423,3 +423,7 @@ body.is-home .index .row { border-top: 0; }
 /* each text keeps its anchor edge while shrinking back, not only while hovered */
 .index .row-title { transform-origin: left center; }
 .index .row-meta { transform-origin: right center; }
+
+/* open entry: the card wraps its photos instead of stretching across the window */
+.entry-card { width: fit-content; min-width: min(360px, 100%); max-width: 100%; }
+.entry-photos { max-width: 100%; }

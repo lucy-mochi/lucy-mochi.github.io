@@ -167,22 +167,30 @@
     var photos = document.createElement("div");
     photos.className = "entry-photos";
     var shown = [], loaded = 0;
+    function sizePhotos() {
+      // all photos share one row at the same height; the row (and so the card) is only as wide as it needs to be
+      var sum = shown.reduce(function (a, p) { return a + p.naturalWidth / p.naturalHeight; }, 0);
+      var gap = 14 * (shown.length - 1);
+      var targetH = Math.min(window.innerHeight * 0.72, 900);
+      var maxW = Math.min(1200, window.innerWidth * 0.92 - 66);
+      photos.style.width = Math.round(Math.min(targetH * sum + gap, maxW)) + "px";
+      card.style.visibility = "visible";
+    }
+    card.style.visibility = "hidden";
     images.forEach(function (src) {
       var im = new Image();
       im.alt = "";
       im.onclick = function () { lbImg.src = im.src; lightbox.hidden = false; };
       im.onload = function () {
         im.style.flex = (im.naturalWidth / im.naturalHeight) + " 1 0px";
-        if (++loaded === images.length) {
-          // all photos share one row at the same height, never taller than 62% of the window
-          var sum = shown.reduce(function (a, p) { return a + p.naturalWidth / p.naturalHeight; }, 0);
-          photos.style.maxWidth = Math.round(window.innerHeight * 0.62 * sum + 14 * (shown.length - 1)) + "px";
-        }
+        if (++loaded === images.length) sizePhotos();
       };
+      im.onerror = function () { if (++loaded === images.length) sizePhotos(); };
       im.src = "assets/art/" + src;
       shown.push(im);
       photos.appendChild(im);
     });
+    setTimeout(function () { card.style.visibility = "visible"; }, 2000);   // never leave the card hidden
     card.appendChild(photos);
     overlay.appendChild(card);
     overlay.hidden = false;
