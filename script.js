@@ -31,9 +31,12 @@
 
   // ---------- project page ----------
   function renderDetail(p) {
-    var links = (p.links || []).map(function (l) {
-      return '<a class="pill" href="' + l.url + '" target="_blank" rel="noopener">' + l.label + " <span>&#8599;</span></a>";
-    }).join("");
+    var all = p.links || [];
+    function pill(l, cls) {
+      return '<a class="pill ' + cls + '" href="' + l.url + '" target="_blank" rel="noopener">' + l.label + " <span>&#8599;</span></a>";
+    }
+    var primary = all.length ? '<div class="primary-link">' + pill(all[0], "primary") + "</div>" : "";
+    var others = all.slice(1).map(function (l) { return pill(l, ""); }).join("");
     var tags = (p.tags || []).map(function (t) { return "<span>" + t + "</span>"; }).join("");
     var refs = p.references ? '<div class="refs"><em>References</em>' + p.references.map(function (r) {
       return '<a class="inline" href="' + r.url + '" target="_blank" rel="noopener">' + r.label + "</a>";
@@ -42,11 +45,12 @@
       '<a class="back" href="#projects">&#8249; Projects</a>' +
       '<div class="meta"><em>' + (p.year || "") + "</em></div>" +
       '<h1 class="page-title">' + p.title + "</h1>" +
+      primary +
       "<p>" + p.description + "</p>" +
       (p.reference ? '<p class="ref"><em>' + p.reference + "</em></p>" : "") +
       refs +
       (tags ? '<div class="tags">' + tags + "</div>" : "") +
-      (links ? '<div class="links">' + links + "</div>" : "");
+      (others ? '<div class="links">' + others + "</div>" : "");
   }
 
   // ---------- projects list ----------

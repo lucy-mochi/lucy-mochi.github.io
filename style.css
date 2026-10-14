@@ -166,3 +166,9 @@ body {
 
 .block-title { font-size: clamp(30px, 4vw, 44px); margin-bottom: 20px; }
 .block { margin-top: 56px; }
+
+/* the essay / paper is the main action on a project page */
+.primary-link { margin: 4px 0 30px; }
+.pill.primary { font-size: 19px; padding: 15px 34px; background: var(--accent); border-color: var(--accent); color: #fff; box-shadow: 0 8px 22px rgba(82, 123, 142, 0.32); }
+.pill.primary span { color: #fff; }
+.pill.primary:hover { background: #3f6475; border-color: #3f6475; }
