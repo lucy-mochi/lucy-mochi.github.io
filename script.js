@@ -232,7 +232,8 @@
             cell.setAttribute("aria-label", data.label);
             var im = new Image();
             im.alt = "";
-            im.src = "assets/art/" + images[0];
+            // the tile shows entry.cover if one is set, otherwise the first photo
+            im.src = "assets/art/" + ((!Array.isArray(data.entry) && data.entry.cover) || images[0]);
             cell.appendChild(im);
             cell.addEventListener("click", function () { openEntry(data.label, data.entry); });
             cell.addEventListener("pointerenter", function () { showTip(cell, note); });

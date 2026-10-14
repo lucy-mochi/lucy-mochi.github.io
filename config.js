@@ -136,6 +136,7 @@ const SITE = {
     "Steak Calendar": {
       "September 21, 2026": {
         note: "Thin, over too soon.",
+        cover: "steaks/2026-09-21/b.jpg",
         images: [
           "steaks/2026-09-21/a.jpg",
           "steaks/2026-09-21/b.jpg"
