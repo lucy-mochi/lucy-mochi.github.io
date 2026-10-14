@@ -352,3 +352,6 @@ body.is-home .index .row { border-top: 0; }
 }
 
 .name .word { display: inline-block; white-space: nowrap; }
+
+/* switching pages: no slide or fade, the new page simply appears in place */
+.tab.on { animation: none; }

@@ -21,7 +21,7 @@
       h = active;
     }
     tabs.forEach(function (t) {
-      document.getElementById(t).classList.toggle("on", t === h);
+      document.getElementById("page-" + t).classList.toggle("on", t === h);
     });
     document.querySelectorAll("[data-tab]").forEach(function (a) {
       a.classList.toggle("active", a.dataset.tab === (h === "project" ? "projects" : h));
@@ -177,7 +177,7 @@
     var grid = document.querySelector(".home-grid");
     var portrait = document.querySelector(".portrait");
     var name = document.querySelector(".name");
-    if (!grid || !portrait || !name || !document.getElementById("home").classList.contains("on")) return;
+    if (!grid || !portrait || !name || !document.getElementById("page-home").classList.contains("on")) return;
     grid.style.gridTemplateColumns = "";
     grid.style.marginTop = "";
     if (window.innerWidth <= 760) return;
