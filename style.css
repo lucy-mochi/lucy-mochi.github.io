@@ -313,3 +313,15 @@ body.is-home .index .row { border-top: 0; }
 .mail-link { font-size: 15px; letter-spacing: 0.02em; color: #000000; padding: 4px 0; background: none; -webkit-text-fill-color: #000000; }
 .mail-link span { color: #527b8e; -webkit-text-fill-color: #527b8e; }
 .mail-link:hover { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; }
+
+/* name split into letters: the gradient moves onto each letter (script sets its slice) */
+.name.split { background: none; -webkit-background-clip: border-box; background-clip: border-box; -webkit-text-fill-color: initial; position: relative; cursor: default; }
+.name .ch {
+  display: inline-block; white-space: pre;
+  background-image: linear-gradient(90deg, #000000 0%, #b3d7ff 50%, #000000 100%);
+  background-repeat: no-repeat;
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: #000000;
+  padding: 0.06em 0.05em 0.32em; margin: -0.06em -0.05em -0.32em;
+  will-change: transform;
+}

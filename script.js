@@ -157,18 +157,33 @@
   }
 
 
-  // ---------- home photo: sized so the space below it matches the space above ----------
+  // ---------- home photo: same size as before, centred between the name and the bottom of the box ----------
   function fitPortrait() {
     var grid = document.querySelector(".home-grid");
     var portrait = document.querySelector(".portrait");
-    if (!grid || !portrait || !document.getElementById("home").classList.contains("on")) return;
-    if (window.innerWidth <= 760) { grid.style.gridTemplateColumns = ""; return; }
+    var name = document.querySelector(".name");
+    if (!grid || !portrait || !name || !document.getElementById("home").classList.contains("on")) return;
     grid.style.gridTemplateColumns = "";
-    var top = portrait.getBoundingClientRect().top + window.scrollY;
-    // viewport bottom minus page margin (14), box border (3) and the gap that matches the one above the photo (40)
-    var h = window.innerHeight - 14 - 3 - 40 - top;
-    h = Math.max(360, Math.min(h, 760));
+    grid.style.marginTop = "";
+    if (window.innerWidth <= 760) return;
+    var defaultMargin = parseFloat(getComputedStyle(grid).marginTop) || 0;
+    var top0 = portrait.getBoundingClientRect().top + window.scrollY;
+    // photo size (unchanged rule): fill down to the box with a 40px gap
+    var boxInnerBottom = window.innerHeight - 14 - 3;
+    var h = Math.max(360, Math.min(boxInnerBottom - 40 - top0, 760));
     grid.style.gridTemplateColumns = Math.round(h * 573 / 802) + "px 1fr";
+    // where the name's letters visibly end (baseline plus the g's descender)
+    var probe = document.createElement("span");
+    probe.style.cssText = "display:inline-block;width:0;height:0;vertical-align:baseline";
+    name.appendChild(probe);
+    var baselineY = probe.getBoundingClientRect().bottom + window.scrollY;
+    name.removeChild(probe);
+    var ctx = document.createElement("canvas").getContext("2d");
+    ctx.font = getComputedStyle(name).fontSize + " Carlito, Calibri, sans-serif";
+    var inkBottom = baselineY + (ctx.measureText("g").actualBoundingBoxDescent || 0);
+    // equal space above and below the photo
+    var g = (boxInnerBottom - inkBottom - h) / 2;
+    if (g >= 24) grid.style.marginTop = (defaultMargin + inkBottom + g - top0) + "px";
   }
   window.addEventListener("resize", fitPortrait);
   window.addEventListener("load", fitPortrait);
@@ -194,6 +209,70 @@
       });
     });
   });
+
+
+  // ---------- front-page name: letters are pushed around by the cursor, then spring back ----------
+  (function () {
+    var h = document.querySelector(".name");
+    if (!h || h.dataset.split) return;
+    var text = h.textContent;
+    h.setAttribute("aria-label", text);
+    h.dataset.split = "1";
+    h.classList.add("split");
+    h.textContent = "";
+    var letters = [];
+    text.split("").forEach(function (ch) {
+      var s = document.createElement("span");
+      s.className = ch === " " ? "ch sp" : "ch";
+      s.setAttribute("aria-hidden", "true");
+      s.textContent = ch;
+      h.appendChild(s);
+      letters.push({ el: s, cx: 0, cy: 0 });
+    });
+
+    // each letter shows its own slice of one continuous black / light-blue / black gradient
+    function layout() {
+      var w = h.offsetWidth, hb = h.getBoundingClientRect();
+      letters.forEach(function (l) {
+        l.el.style.transform = "none";
+        l.el.style.backgroundSize = w + "px 100%";
+        l.el.style.backgroundPosition = -l.el.offsetLeft + "px 0";
+        var r = l.el.getBoundingClientRect();
+        l.cx = r.left - hb.left + r.width / 2;
+        l.cy = r.top - hb.top + r.height / 2;
+      });
+    }
+    layout();
+    window.addEventListener("resize", layout);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(layout);
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    var RADIUS = 170, timer = null;
+    function release() {
+      letters.forEach(function (l) {
+        l.el.style.transition = "transform 1.1s cubic-bezier(.2, 1.7, .4, 1)";
+        l.el.style.transform = "none";
+      });
+    }
+    h.addEventListener("pointermove", function (e) {
+      var hb = h.getBoundingClientRect(), px = e.clientX - hb.left, py = e.clientY - hb.top;
+      letters.forEach(function (l) {
+        var dx = l.cx - px, dy = l.cy - py, d = Math.sqrt(dx * dx + dy * dy) || 1;
+        if (d < RADIUS) {
+          var f = 1 - d / RADIUS, push = f * f * 70;
+          l.el.style.transition = "transform .16s ease-out";
+          l.el.style.transform = "translate(" + (dx / d) * push + "px," + (dy / d) * push + "px) rotate(" + (dx / RADIUS) * f * 28 + "deg)";
+        } else {
+          l.el.style.transition = "transform .5s ease-out";
+          l.el.style.transform = "none";
+        }
+      });
+      clearTimeout(timer);
+      timer = setTimeout(release, 280);
+    });
+    h.addEventListener("pointerleave", function () { clearTimeout(timer); release(); });
+  })();
 
   window.addEventListener("hashchange", function () { show(); fitPortrait(); });
   show();
