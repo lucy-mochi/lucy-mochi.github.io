@@ -327,3 +327,15 @@ body.is-home .index .row { border-top: 0; }
 }
 
 .group-note { font-size: 18px; line-height: 1.5; color: #000; margin: 0 0 18px; max-width: 70ch; }
+
+/* big page titles: same black / light blue / black gradient as the name (room below for descenders) */
+.page-title {
+  width: fit-content; max-width: 100%;
+  background: linear-gradient(90deg, #000000 0%, #b3d7ff 50%, #000000 100%);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #000000;
+  padding: 0.06em 0.08em 0.32em 0;
+  margin: calc(44px - 0.06em) 0 calc(6px - 0.32em);
+}
+.detail .page-title { margin: calc(10px - 0.06em) 0 calc(26px - 0.32em); }
