@@ -427,3 +427,10 @@ body.is-home .index .row { border-top: 0; }
 /* open entry: the card wraps its photos instead of stretching across the window */
 .entry-card { width: fit-content; min-width: min(360px, 100%); max-width: 100%; }
 .entry-photos { max-width: 100%; }
+
+/* active page: a soft blue glow behind the word that fades to transparent on every side (extra padding is offset by equal negative margins, so spacing is unchanged) */
+.bar nav a, .subnav a { padding: 6px 20px; margin: -6px -20px; }
+.bar nav a.active, .subnav a.active {
+  background: radial-gradient(closest-side, rgba(179, 215, 255, 1) 0%, rgba(179, 215, 255, 0.95) 48%, rgba(179, 215, 255, 0) 100%);
+}
+@media (max-width: 760px) { .bar nav a, .subnav a { padding: 6px 12px; margin: -6px -12px; } }
